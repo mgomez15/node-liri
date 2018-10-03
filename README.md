@@ -8,6 +8,7 @@ Santa Clara, Levi's Stadium, 2018-09-29T19:30:00
 Vancouver, BC Place, 2018-10-02T19:32:00
 Seattle, CenturyLink Field, 2018-10-04T19:30:00
 
+
 "spotify-this-song"
 
 Marias-MacBook-Pro:liri Marifer$ node liri concert-this beyonce
@@ -38,7 +39,65 @@ Beyoncé, Countdown, https://p.scdn.co/mp3-preview/ad046f8b135785f005bf84b63d657
 Beyoncé, Me, Myself and I, https://p.scdn.co/mp3-preview/c2fd6a04b5ef5e9ca5573c88679183aaaf9b356f?cid=d2a35cbaf6ce479aa22480457f01ad2f, Dangerously In Love
 DJ Khaled, Top Off, https://p.scdn.co/mp3-preview/6a323067f2c990daacf689cb50149521a3721892?cid=d2a35cbaf6ce479aa22480457f01ad2f, Top Off
 
+
 "movie-this"
+
+Marias-MacBook-Pro:liri Marifer$ node liri.js movie-this
+this is loaded
+================ Movie Info ================
+Title: Undefined
+Release Year: 2014
+IMdB Rating: N/A
+Country: Lebanon
+Language: Arabic
+Plot: N/A
+Actors: Dana Ahmed, Fouz Alfahad, Nour Arida, Soraya Bakhtiar
+/Users/Marifer/Desktop/liri/liri.js:44
+            console.log("Rotten Tomatoes Rating: " + body.Ratings[2].Value);
+                                                                     ^
+
+TypeError: Cannot read property 'Value' of undefined
+    at Request._callback (/Users/Marifer/Desktop/liri/liri.js:44:70)
+    at Request.self.callback (/Users/Marifer/Desktop/liri/node_modules/request/request.js:185:22)
+    at emitTwo (events.js:126:13)
+    at Request.emit (events.js:214:7)
+    at Request.<anonymous> (/Users/Marifer/Desktop/liri/node_modules/request/request.js:1161:10)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at IncomingMessage.<anonymous> (/Users/Marifer/Desktop/liri/node_modules/request/request.js:1083:12)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at IncomingMessage.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:139:11)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+Marias-MacBook-Pro:liri Marifer$ node liri movie-this frozen
+this is loaded
+================ Movie Info ================
+Title: Frozen
+Release Year: 2013
+IMdB Rating: 7.5
+Country: USA
+Language: English, Norwegian
+Marias-MacBook-Pro:liri Marifer$ node liri movie-this frozenthis is loaded
+================ Movie Info ================
+Title: Frozen
+Release Year: 2013
+IMdB Rating: 7.5
+Country: USA
+Language: English, Norwegian
+Plot: When the newly-crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather condition.
+Actors: Kristen Bell, Idina Menzel, Jonathan Groff, Josh Gad
+Rotten Tomatoes Rating: 74/100
+Rotten Tomatoes URL: http://www.rottentomatoes.com/m/frozen_2013/
+================== THE END =================
+
 
 "do-what-it-says"
    
+Marias-MacBook-Pro:liri Marifer$ node liri do-what-it-says
+this is loaded
+================ Info ===================
+spotify-this-song,"I Want it That Way"
+================ THE END ================
+Marias-MacBook-Pro:liri Marifer$
