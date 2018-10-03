@@ -3,6 +3,8 @@ var request = require("request");
 var Spotify = require('node-spotify-api');
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
+var command = process.argv[3];
+var fs = require("fs");
 
 var concert = function (artist) {
     var url = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
@@ -25,25 +27,46 @@ var spot = function (song) {
     });
 }
 
-var movie = function (movieTitle) {
-    var url = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy";
+function movie() {
+    var movieTitle = command;
+    var url = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&tomatoes=true&apikey=trilogy";
     request(url, function (error, response, body) {
-        var data = JSON.parse(body);
-        for (var i = 0; i < data.length; i++) {
-            console.log(data[i].movieTitle.year + ", " + data[i].name.imdbRating + ", " + data[i].datetime);
+        if (!error && response.statusCode === 200) {
+            var body = JSON.parse(body);
+            console.log('================ Movie Info ================');
+            console.log("Title: " + body.Title);
+            console.log("Release Year: " + body.Year);
+            console.log("IMdB Rating: " + body.imdbRating);
+            console.log("Country: " + body.Country);
+            console.log("Language: " + body.Language);
+            console.log("Plot: " + body.Plot);
+            console.log("Actors: " + body.Actors);
+            console.log("Rotten Tomatoes Rating: " + body.Ratings[2].Value);
+            console.log("Rotten Tomatoes URL: " + body.tomatoURL);
+            console.log('================== THE END =================');
+
+        } else {
+            console.log("Error occurred.")
         }
-        if (movieTitle === undefined) {
-            movieTitle = "mr nobody";
+        //Response if user does not type in a movie title
+        if (movieTitle === "Mr. Nobody") {
+            console.log("-----------------------");
+            console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+            console.log("It's on Netflix!");
+
+
         }
     });
 };
 
 function says() {
-    fs.readFile('random.txt', "utf8", function (error, data) {
-        var txt = data.split(',');
-        spot(txt[1]);
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (!error);
+        console.log('================ Info ===================');
+        console.log(data.toString());
+        console.log('================ THE END ================');
     });
-};
+}
 
 
 if (process.argv[2] === "concert-this") {
